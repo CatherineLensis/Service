@@ -321,57 +321,6 @@ void CLoaderDlg::OnBnClickedButtonBrowse()
 						}
 					}
 				}
-				
-			//	LoadIcon(hDll, MAKEINTRESOURCE(cplInfo.idIcon))
-			//	LoadString(hDll)
-			//	// Используем данные из CPL
-			//	//m_editDescription.SetWindowText(CString(cplInfo.szInfo ? cplInfo.szInfo : _T("Описание не найдено")));
-
-			//	TCHAR szFileName[MAX_PATH];
-			//	GetModuleFileName(hDll, szFileName, MAX_PATH);
-			//	m_editName.SetWindowText(PathFindFileName(szFileName));
-
-			//	DWORD dummy;
-			//	DWORD size = GetFileVersionInfoSize(dllPath, &dummy);
-			//	if (size > 0)
-			//	{
-			//		std::vector<BYTE> buffer(size);
-			//		if (GetFileVersionInfo(dllPath, 0, size, buffer.data()))
-			//		{
-			//			LPVOID value;
-			//			UINT len;
-			//			static const LPCTSTR Sub_Blocks[] = {
-			//				_T("\\StringFileInfo\\040904b0\\FileDescription"), // Русский Unicode
-			//				_T("\\StringFileInfo\\040904E4\\FileDescription"), // Русский ANSI
-			//				_T("\\StringFileInfo\\040904B0\\FileDescription"), // Английский Unicode
-			//				_T("\\StringFileInfo\\000004B0\\FileDescription")  // Универсальный Unicode
-			//			};
-			//			bool descriptionFound = false;
-			//			for (int i = 0; i < _countof(Sub_Blocks); ++i)
-			//			{
-			//				if (VerQueryValue(buffer.data(), Sub_Blocks[i], &value, &len) && len > 0)
-			//				{
-			//					m_editDescription.SetWindowText((LPCTSTR)value);
-			//					descriptionFound = true;
-			//					break;
-			//				}
-			//			}
-			//			if (!descriptionFound)
-			//			{
-			//				m_editDescription.SetWindowText(_T("Описание не найдено"));
-			//			}
-			//		}
-			//	}
-			//	HICON hIcon = ExtractIcon(NULL, dllPath, 0);
-			//	if (hIcon)
-			//	{
-			//		m_hModuleIcon = CopyIcon(hIcon);
-			//		DestroyIcon(hIcon);
-			//		if (m_hModuleIcon)
-			//		{
-			//			m_staticIcon.SetIcon(m_hModuleIcon);
-			//		}
-			//	}
 			}
 		}
 	}

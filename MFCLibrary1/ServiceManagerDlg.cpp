@@ -75,17 +75,6 @@ void CServiceManagerDlg::PopulateServiceList(const CString& filter) {
     std::vector<ServiceInfo> services = GetServiceList(); // Получаем список служб
     for (size_t i = 0; i < services.size(); ++i) {
         if (filter.IsEmpty() || services[i].name.Find(filter) != -1) {
-            //HICON hIcon = ExtractIcon(NULL, services[i].path, 0); // Извлекаем иконку
-            //int iconIndex = -1;
-            //if (hIcon) {
-            //    iconIndex = m_imageList.Add(hIcon); // Добавляем иконку в список
-            //    DestroyIcon(hIcon);                 // Освобождаем ресурсы иконки
-            //}
-            //// Добавляем элемент в список управления
-            //int index = m_listServices.InsertItem(i, services[i].name, iconIndex);
-            //m_listServices.SetItemText(index, 1, services[i].description);
-            //m_listServices.SetItemText(index, 2, services[i].status);
-            //m_listServices.SetItemText(index, 3, services[i].startupType);
             int iconIndex = -1;
             // Извлекаем иконку с помощью SHGetFileInfo
             SHFILEINFO sfi = { 0 };
@@ -200,48 +189,3 @@ void CServiceManagerDlg::OnLvnItemchangedServiceList(NMHDR* pNMHDR, LRESULT* pRe
     }
     *pResult = 0;
 }
-
-//std::vector<ServiceInfo> EnumerateServices() {
-//    std::vector<ServiceInfo> services;
-//    SC_HANDLE hSCManager = OpenSCManager(NULL, NULL, SC_MANAGER_ENUMERATE_SERVICE);
-//    if (!hSCManager) return services;
-//
-//    DWORD dwBytesNeeded = 0;
-//    DWORD dwServicesReturned = 0;
-//    DWORD dwResumeHandle = 0;
-//
-//    EnumServicesStatusEx(hSCManager, SC_ENUM_PROCESS_INFO, SERVICE_WIN32, SERVICE_STATE_ALL,
-//        NULL, 0, &dwBytesNeeded, &dwServicesReturned, &dwResumeHandle, NULL);
-//
-//    if (GetLastError() == ERROR_MORE_DATA) {
-//        std::vector<BYTE> buffer(dwBytesNeeded);
-//        LPENUM_SERVICE_STATUS_PROCESS lpServices = (LPENUM_SERVICE_STATUS_PROCESS)buffer.data();
-//
-//        if (EnumServicesStatusEx(hSCManager, SC_ENUM_PROCESS_INFO, SERVICE_WIN32, SERVICE_STATE_ALL,
-//            (LPBYTE)lpServices, dwBytesNeeded, &dwBytesNeeded, &dwServicesReturned,
-//            &dwResumeHandle, NULL)) {
-//            for (DWORD i = 0; i < dwServicesReturned; i++) {
-//                ServiceInfo info;
-//                info.name = lpServices[i].lpServiceName;
-//                info.displayName = lpServices[i].lpDisplayName;
-//                info.currentState = lpServices[i].ServiceStatusProcess.dwCurrentState;
-//                info.processId = lpServices[i].ServiceStatusProcess.dwProcessId;
-//
-//                SC_HANDLE hService = OpenService(hSCManager, lpServices[i].lpServiceName, SERVICE_QUERY_CONFIG);
-//                if (hService) {
-//                    DWORD dwNeeded = 0;
-//                    QueryServiceConfig(hService, NULL, 0, &dwNeeded);
-//                    std::vector<BYTE> configBuffer(dwNeeded);
-//                    LPQUERY_SERVICE_CONFIG lpConfig = (LPQUERY_SERVICE_CONFIG)configBuffer.data();
-//                    if (QueryServiceConfig(hService, lpConfig, dwNeeded, &dwNeeded)) {
-//                        info.startType = lpConfig->dwStartType;
-//                    }
-//                    CloseServiceHandle(hService);
-//                }
-//                services.push_back(info);
-//            }
-//        }
-//    }
-//    CloseServiceHandle(hSCManager);
-//    return services;
-//}

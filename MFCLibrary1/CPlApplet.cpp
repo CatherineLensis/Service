@@ -12,16 +12,7 @@ extern "C" LONG APIENTRY CPlApplet(HWND hwndCpl, UINT uMsg, LPARAM lParam1, LPAR
         return 1; // Один апплет
     case CPL_INQUIRE: {
         CPLINFO* pInfo = (CPLINFO*)lParam2;
-        //pInfo->dwSize = sizeof(CPLINFO);
-        //pInfo->dwFlags = 0;
-        //pInfo->dwHelpContext = 0;
-        //pInfo->lData = 0;
-        //pInfo->hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDI_APPLET_ICON));
-        //// Загрузка Unicode-строк
-        //LoadStringA(AfxGetInstanceHandle(), IDS_APPLET_NAME, pInfo->szName, sizeof(pInfo->szName));
-        //LoadStringA(AfxGetInstanceHandle(), IDS_APPLET_INFO, pInfo->szInfo, sizeof(pInfo->szInfo));
 
-        //pInfo->szHelpFile[0] = '\0'; // Простое обнуление строки
         pInfo->idIcon = IDI_APPLET_ICON;
         pInfo->idName = IDS_APPLET_NAME;
         pInfo->idInfo = IDS_APPLET_INFO;
