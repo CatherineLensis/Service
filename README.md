@@ -1,4 +1,4 @@
-# MFC Library 1: Загрузчик апплетов и менеджер служб
+# Service Manager & Loader: Загрузчик апплетов и менеджер служб
 ![image](https://github.com/user-attachments/assets/27ac5a37-f820-4c6d-b3f2-d83698fe3862)
 
 ## Введение
